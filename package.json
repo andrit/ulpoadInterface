@@ -1,0 +1,26 @@
+{
+  "name": "ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "animejs": "^2.2.0",
+    "axios": "^0.18.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-day-picker": "^7.1.10",
+    "react-dom": "^16.4.1",
+    "react-dropzone": "^4.2.12",
+    "react-moment-proptypes": "^1.6.0",
+    "react-motion": "^0.5.2",
+    "react-scripts": "1.1.4",
+    "react-virtualized": "^9.20.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

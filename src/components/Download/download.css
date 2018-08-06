@@ -1,0 +1,78 @@
+.download-section{
+    margin-left: 5.66666%;
+    min-height: 160px;
+    border: 1px solid #034694;
+    border-radius: 4px;
+    margin-top: 40px;
+    padding-left: 0;
+    padding-right: 0;
+    
+}
+.download-section p{
+    text-align: center;
+}
+
+.download-section header{
+    background-color:#034694;
+    width: 100%;
+    height: 30px;
+    padding: 2px 20px 0;
+}
+.download-section header h2{
+    color: #FFF;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 21px;
+
+}
+.download-section-content{
+    display:flex;
+    width: 100%;
+    height: 100px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #EFEFEF;
+}
+
+button.download-btn{
+    margin: auto;
+    padding: 0 !important;
+    width: 200px;
+    height: 60px;
+    box-shadow: 0px 0px 0px 4px transparent;
+    border: 1px inset rgba(51, 51, 51, 0.75);
+    background-color: rgb(85, 85, 85);
+}
+button.download-btn:hover{
+    box-shadow: 1px 1px 0px 1px rgba(51, 51, 51, 0.26);
+    border: 1.1px inset rgba(112, 112, 112, 0.75);
+}
+.go-left{
+    float: left;
+    height: 100%;
+    width: 30%;
+    text-align:center;
+    background-color: #034694;
+    color: white;
+    padding-top: 20px;
+}
+.go-left i{
+    font-size: 21px;
+}
+.go-right{
+    float: right;
+    height: 100%;
+    width: 70%;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px transparent;
+}
+button.download-btn:hover .go-right{
+    text-shadow: 7px #FFF;
+}

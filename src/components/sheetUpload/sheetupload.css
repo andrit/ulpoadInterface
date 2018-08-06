@@ -1,0 +1,90 @@
+.upload-form-section{
+    margin: 50px auto 10px;
+}
+
+.upload-form-section header{
+    padding-left: 10px;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.589);
+    margin-bottom: 15px;
+}
+
+.upload-form-section header .border-right{
+    border-right: 1px solid rgba(51, 51, 51, 0.623);
+}
+.btn-wrap{
+    margin-top: 20px;
+    position: relative;
+    border-top: 1px solid rgba(51, 51, 51, 0.623);
+}
+
+.btn-wrap .btn{
+    position: absolute;
+    right: 15%;
+    top: 20px;
+}
+.upload-form-section .top-header{
+    position: relative;
+    height:90px;
+   border-bottom: 1px solid rgba(51, 51, 51, 0.589);
+;
+   margin-left: -15px;
+   margin-right: -15px;
+}
+.upload-form-section .top-header h1{
+    position:absolute;
+    top:10px; 
+    left: 10px;
+}
+
+.download-template{
+    position:absolute;
+    top: 30px; 
+    right: 10px;
+    border: 1px inset #ccc;
+    background-color: #034694;
+    color: #FFF;
+    padding: 6px;
+    margin-left: 10px;
+    transition: all .5s;
+    
+}
+
+.download-template:hover, .download-template:visited, .download-template:active{
+    background-color: #FFF;
+    color: #034694;
+    border-color: #034694;
+}
+.download-template i {
+    margin-left: 5px;
+}
+
+.dropzone-wrap{
+    text-align: center;  
+}
+.dropzone-wrap:hover{
+    cursor: pointer; 
+}
+
+.dropzone-wrap i{ font-size: 32px; color: #225591}
+.dropzone-wrap p{ margin-bottom: -1px;}
+.dropzone-wrap h6{ font-size: 14px; font-weight: lighter; color: #225591; }
+.dropzone-wrap h4{ font-size: 18px; font-weight: bold; margin: 13px 0;}
+.dropzone-wrap .upload-browse{
+    background-color: #034694;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.dropzone-inner{
+    background-color: #4169972a;
+    padding: 30px 10px;
+    max-width: 320px;
+    border: 2px dashed #4169972a;
+}
+
+.remove-list-item p {
+    line-height: 18px;
+}
