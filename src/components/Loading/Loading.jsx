@@ -28,13 +28,20 @@ class Loading extends Component{
           },
         {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                // 'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'multipart/form-data'
             }
         })
          .then(res=>{
              //console.log('file: ', file[0]);
              console.log('resdata: ', res.data);
+             //this.props.updateSalesmanNumber(res.data.salesman);
            })
+        .then( () => {
+            setTimeout(this.props.handleLongPoll, 1000);
+        }
+            
+        )
          .catch(error => {
              console.log('axios error: ', error.response);
            }

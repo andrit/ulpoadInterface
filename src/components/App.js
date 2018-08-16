@@ -39,9 +39,10 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-        buyerName: 'Mark Cuban',
-        ignoreinvalid: false,
-        skipoqf: false,
+        salesmanName: 'Mark Cuban',
+        salesmanNumber: 0,
+        ignoreinvalid: '0', //used to be false 8/12
+        skipoqf: '0',
         fileUploaded: false,
         fileUploading: localStorage.getItem("fileUploading") || false,
         uploadedFile: null,
@@ -52,35 +53,12 @@ class App extends Component {
         zonesarray: zonesfoundarray || [], 
         manufacturersfound: mfgfoundarray.length, 
         manufacturersarray: mfgfoundarray || [],
-        uploadErr: false
+        uploadErr: false,
+        sheetProcessStatus: 'none',
     };
-   
-   // this.upfile = this.state.uploadedFile; 
-    //this.fileToUpload = this.upfile !== null ? getBase64(this.upfile[0]) : null;
+   this.pollStatusUrl = 'https://as400pcr.pcrichard.com:1082/php/bulkpricing/pollpricesheetstatus';
   }
-  
-  /*
-   handleGetBackData = () => {
-    const ajaxurl = "./data/data.json";
-   
-    loadJsonLocal(ajaxurl, getJSONResObj)
-      .then(data => {
-        console.log('ajax data: ', data);
-        this.setState({
-          uploadedFileContents: data
-        })
-      })
-      .then(
-        this.setState({
-          fileUploaded: true
-        })
-      )
-      .catch((err) => {
-        console.log("Error in Fetch:", err);
-      })
-  }
-  */
- 
+
   updateFile = (file) => {
     return new Promise((resolve, reject) => {
       try{
@@ -88,14 +66,13 @@ class App extends Component {
         this.setState({
           uploadedFile: file,
         })
-
         
-      }
-      catch(e){
-        reject(e);
-      }
+        }
+        catch(e){
+          reject(e);
+        }
     }); 
-  };
+  }
 
   removeErr = () => {
     this.setState({
@@ -103,7 +80,34 @@ class App extends Component {
     })
   }
 
-    //ui calls this, this runs the function pull data into data state (need jwt?)
+  updateSalesmanNumber = (salesmanNumber) => {
+    this.setState({ salesmanNumber: salesmanNumber})
+  }
+
+  runPoll = (salesman) => {
+    return axios.post(this.pollStatusUrl, {salesmannumber: salesman})
+    .then( res => {
+        // let status = res.status ?  res.status : 'none';  
+        let status = res.status;  
+        this.setState({
+          sheetProcessStatus: status
+        })
+      }
+    ).catch(error => {
+      console.log('polling error: ', error.response);
+    }
+  )
+  }
+
+  handleLongPoll = () => {
+    //if status == null
+    let salesmannumber = this.state.salesmanNumber;   
+    setInterval( this.runPoll(salesmannumber), 5000 );
+}
+
+
+
+
   handleFileSend = (file) => {
     if(file){
         this.updateFile(file)
@@ -130,7 +134,7 @@ class App extends Component {
 
   render() {
     return (
-      <Layout buyerName={this.state.buyerName}>
+      <Layout salesmanName={this.state.salesmanName}>
       {this.state.fileUploaded 
       ? <FileReview>
           <TransactionInfo 
@@ -153,7 +157,9 @@ class App extends Component {
             loadingStatus={this.state.loadingStatus}
             ignoreinvalid={this.state.ignoreinvalid} 
             skipoqf={this.state.skipoqf}
-            uploadedFile={this.state.uploadedFile} /> 
+            uploadedFile={this.state.uploadedFile}
+            updateSalesmanNumber={this.updateSalesmanNumber}
+            handleLongPoll={this.handleLongPoll} /> 
         : <SheetUpload 
             handleFileSend={this.handleFileSend} 
             ignoreinvalid={this.state.ignoreinvalid} 
